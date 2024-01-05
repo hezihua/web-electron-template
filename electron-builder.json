@@ -1,0 +1,20 @@
+/** electron-builder.json */
+
+// 暂时先设置这两个配置防止打包后的应用出现的各种问题。（后面解释为什么需要设置）
+{
+  "files": ["dist/**/*", "dist-electron/**/*"], // 设置需要打包的文件
+  "directories": {
+    "output": "release" // 设置出口文件
+  },
+  "win": {
+    "artifactName": "${productName}-${platform}-${arch}-${version}.${ext}",
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["ia32"]
+      }
+    ]
+    // 打出来的包，自动获取管理员权限，不建议打开
+    // requestedExecutionLevel: 'highestAvailable',
+  }
+}
